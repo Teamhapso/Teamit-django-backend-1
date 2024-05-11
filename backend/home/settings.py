@@ -7,14 +7,14 @@ import os
 TEAM_MODEL = 'team.Team'
 
 # Initialize Firebase Admin SDK
-CONFIG_BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-firebase_credentials_path = os.path.join(CONFIG_BASE_DIR, 'firebase-credentials.json')
+CONFIG_BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+firebase_credentials_path = os.path.join(CONFIG_BASE_DIR, '.config', 'firebase-credentials.json')
 
 cred = credentials.Certificate(firebase_credentials_path)
 firebase_admin.initialize_app(cred)
 
 # Load variables from .env file
-ENV_FILE_PATH = os.path.join(CONFIG_BASE_DIR, '.env') 
+ENV_FILE_PATH = os.path.join(CONFIG_BASE_DIR, '.config', '.env') 
 config = AutoConfig(search_path=ENV_FILE_PATH)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
